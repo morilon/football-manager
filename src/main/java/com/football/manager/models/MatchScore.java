@@ -2,8 +2,8 @@ package com.football.manager.models;
 
 public class MatchScore {
 	
-	private Score homeTeamScore;
-	private Score visitorTeamScore;
+	protected Score homeTeamScore;
+	protected Score visitorTeamScore;
 	
 	public MatchScore() {
 		// Default Constructor

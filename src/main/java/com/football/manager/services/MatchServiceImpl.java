@@ -1,38 +1,46 @@
 package com.football.manager.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.football.manager.models.Match;
 import com.football.manager.models.MatchScore;
+import com.football.manager.repository.interfaces.MatchRepository;
 import com.football.manager.services.interfaces.MatchService;
 
 @Service
 public class MatchServiceImpl implements MatchService {
 
-	@Override
-	public Match save(MatchScore match) {
+	private MatchRepository repository;
 
-		return new Match();
+	public MatchServiceImpl(MatchRepository repository) {
+		this.repository = repository;
+	}
+
+	@Override
+	public Match save(MatchScore matchScore) {
+
+		Match match = new Match(matchScore);
+		
+		return repository.save(match);
 	}
 
 	@Override
 	public Match getInfo(int matchId) {
 
-		return null;
+		return repository.getInfo(matchId);
 	}
 
 	@Override
 	public List<Match> getAllByTeam(int teamId) {
 
-		return new ArrayList<>();
+		return repository.getAllByTeam(teamId);
 	}
 
 	@Override
 	public List<Match> getAll() {
 
-		return new ArrayList<>();
+		return repository.getAll();
 	}
 }

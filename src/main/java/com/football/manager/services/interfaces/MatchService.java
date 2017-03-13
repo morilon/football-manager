@@ -6,7 +6,7 @@ import com.football.manager.models.Match;
 import com.football.manager.models.MatchScore;
 
 public interface MatchService {
-	Match save(MatchScore match);
+	Match save(MatchScore matchScore);
 	Match getInfo(int matchId);
 	List<Match> getAllByTeam(int teamId);
 	List<Match> getAll();

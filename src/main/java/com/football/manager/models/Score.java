@@ -13,7 +13,7 @@ public class Score {
 		this.teamId = teamId;
 		this.goals = goals;
 	}
-
+	
 	public int getTeamId() {
 		return teamId;
 	}
