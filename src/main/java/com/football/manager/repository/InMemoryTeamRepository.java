@@ -15,15 +15,14 @@ public class InMemoryTeamRepository implements TeamRepository {
 
 	public InMemoryTeamRepository() {
 		this.teams =  new ArrayList<>();
+		
+		teams.add(new Team(1, "CORINTHIANS"));
+		teams.add(new Team(2, "PALMEIRAS"));
+		teams.add(new Team(3, "SAO PAULO"));
 	}
 
 	@Override
 	public List<Team> getAll() {
-
-		teams.add(new Team(1, "CORINTHIANS"));
-		teams.add(new Team(2, "PALMEIRAS"));
-		teams.add(new Team(3, "SAO PAULO"));
-
 		return teams;
 	}
 
@@ -35,6 +34,6 @@ public class InMemoryTeamRepository implements TeamRepository {
 				.findFirst()
 				.orElse(null);
 		
-		return team.getName();
+		return team == null ? "TEAM NOT FOUND" : team.getName();
 	}
 }

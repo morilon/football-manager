@@ -1,8 +1,10 @@
 package com.football.manager.services.interfaces;
 
-import com.football.manager.models.Classification;
+import java.util.List;
+
+import com.football.manager.models.ChampionshipClassification;
 
 @FunctionalInterface
 public interface ClassificationService {
-	Classification getClassification();
+	List<ChampionshipClassification> getClassification();
 }

@@ -61,7 +61,7 @@ public class InMemoryClassificationRepository implements ClassificationRepositor
 		
 		setGoalsFor(homeScore.getGoals(), visitorScore.getGoals());
 		
-		setGoalsAgainst(homeScore.getGoals(), visitorScore.getGoals());
+		setGoalsAgainst(visitorScore.getGoals(), homeScore.getGoals());
 		
 		classification.set(homeIndex, homeTeamClassification);
 		classification.set(visitorIndex, visitorTeamClassification);
