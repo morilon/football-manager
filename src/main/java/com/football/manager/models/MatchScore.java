@@ -1,17 +1,19 @@
 package com.football.manager.models;
 
-public class Match {
+public class MatchScore {
 	
-	private int id;
 	private Score homeTeamScore;
 	private Score visitorTeamScore;
-
-	public int getId() {
-		return id;
+	
+	public MatchScore() {
+		// Default Constructor
 	}
-	public void setId(int id) {
-		this.id = id;
+	
+	public MatchScore(Score homeTeamScore, Score visitorTeamScore) {
+		this.homeTeamScore = homeTeamScore;
+		this.visitorTeamScore = visitorTeamScore;
 	}
+	
 	public Score getHomeTeamScore() {
 		return homeTeamScore;
 	}

@@ -1,4 +1,4 @@
-package com.football.manager.service.interfaces;
+package com.football.manager.services.interfaces;
 
 import com.football.manager.models.Classification;
 
