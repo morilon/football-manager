@@ -7,31 +7,21 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.football.manager.models.Match;
-import com.football.manager.repository.interfaces.ClassificationRepository;
 import com.football.manager.repository.interfaces.MatchRepository;
 
 @Service
 public class InMemoryMatchRepository implements MatchRepository {
 
-	private ClassificationRepository classificationRepository;
 	private List<Match> matches;
-	private int matchId = 0;
 
-	public InMemoryMatchRepository(ClassificationRepository classificationRepository) {
-		this.classificationRepository = classificationRepository;
+	public InMemoryMatchRepository() {
 		matches = new ArrayList<>();
 	}
 
 	@Override
 	public Match save(Match match) {
 
-		matchId++;
-
-		match.setId(matchId);
-
 		matches.add(match);
-		
-		classificationRepository.updateChampionship(match);
 		
 		return match;
 	}
