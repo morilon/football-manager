@@ -1,13 +1,21 @@
 rootProject.name = 'football-manager'
 
-include 'football-manager-configurations'
 include 'football-manager-models'
-include 'football-manager-service-teams'
+include 'football-manager-configurations'
+include 'football-manager-requests'
+
 include 'football-manager-store-teams'
 include 'football-manager-store-matches'
 
-project(':football-manager-configurations').projectDir = "$rootDir/football-manager-configurations" as File
+include 'football-manager-service-teams'
+include 'football-manager-service-matches'
+
 project(':football-manager-models').projectDir = "$rootDir/football-manager-models" as File
-project(':football-manager-service-teams').projectDir = "$rootDir/football-manager-service-teams" as File
+project(':football-manager-configurations').projectDir = "$rootDir/football-manager-configurations" as File
+project(':football-manager-requests').projectDir = "$rootDir/football-manager-requests" as File
+
 project(':football-manager-store-teams').projectDir = "$rootDir/football-manager-store-teams" as File
 project(':football-manager-store-matches').projectDir = "$rootDir/football-manager-store-matches" as File
+
+project(':football-manager-service-teams').projectDir = "$rootDir/football-manager-service-teams" as File
+project(':football-manager-service-matches').projectDir = "$rootDir/football-manager-service-matches" as File

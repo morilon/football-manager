@@ -28,4 +28,12 @@ public class MatchScore {
 	public void setVisitorTeamScore(Score visitorTeamScore) {
 		this.visitorTeamScore = visitorTeamScore;
 	}
+	
+	public Boolean isValid() {
+		return 
+				this.getHomeTeamScore() != null && 
+				this.getVisitorTeamScore() != null &&
+				this.getHomeTeamScore().getTeamId() > 0 &&
+				this.getVisitorTeamScore().getTeamId() > 0;
+	}
 }

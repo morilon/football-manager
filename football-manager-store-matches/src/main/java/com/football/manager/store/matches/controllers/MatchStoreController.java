@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.football.manager.matches.requests.RequestMappingDelete;
+import com.football.manager.matches.requests.RequestMappingGetAll;
+import com.football.manager.matches.requests.RequestMappingGetAllByTeam;
+import com.football.manager.matches.requests.RequestMappingGetById;
+import com.football.manager.matches.requests.RequestMappingSave;
 import com.football.manager.models.matches.Match;
+import com.football.manager.models.matches.MatchScore;
 import com.football.manager.store.matches.interfaces.MatchStore;
-import com.football.manager.store.matches.requests.RequestMappingDelete;
-import com.football.manager.store.matches.requests.RequestMappingGetAll;
-import com.football.manager.store.matches.requests.RequestMappingGetAllByTeam;
-import com.football.manager.store.matches.requests.RequestMappingGetInfo;
-import com.football.manager.store.matches.requests.RequestMappingSave;
 
 @RestController
 public class MatchStoreController {
@@ -24,28 +25,32 @@ public class MatchStoreController {
 	private MatchStore store;
 
 	@RequestMappingSave
-	public ResponseEntity<Match> save(@RequestBody Match match){
-		return new ResponseEntity<>(store.save(match), HttpStatus.OK);
+	public ResponseEntity<Match> save(@RequestBody MatchScore matchScore){
+
+		if (matchScore == null || !matchScore.isValid())
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+
+		return ResponseEntity.ok(store.save(matchScore));
 	}
 
 	@RequestMappingDelete
 	public ResponseEntity<Void> delete(@PathVariable int matchId){
 		store.delete(matchId);
-		return new ResponseEntity<>(HttpStatus.OK);
+		return ResponseEntity.ok(null);
 	}
 
-	@RequestMappingGetInfo
-	public ResponseEntity<Match> getInfo(@PathVariable int matchId) {
-		return new ResponseEntity<>(store.getInfo(matchId), HttpStatus.OK);
+	@RequestMappingGetById
+	public ResponseEntity<Match> getById(@PathVariable int matchId) {
+		return ResponseEntity.ok(store.getById(matchId));
 	}
 
 	@RequestMappingGetAllByTeam
 	public ResponseEntity<List<Match>> getAllByTeam(@PathVariable int teamId) {
-		return new ResponseEntity<>(store.getAllByTeam(teamId), HttpStatus.OK);
+		return ResponseEntity.ok(store.getAllByTeam(teamId));
 	}
 
 	@RequestMappingGetAll
 	public ResponseEntity<List<Match>> getAll() {
-		return new ResponseEntity<>(store.getAll(), HttpStatus.OK);
+		return ResponseEntity.ok(store.getAll());
 	}
 }

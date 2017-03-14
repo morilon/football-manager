@@ -27,13 +27,11 @@ public class TeamStoreImpl implements TeamStore {
 	}
 
 	@Override
-	public String getTeamName(int teamId) {
-		Team team = teams
+	public Team getById(int teamId) {
+		return teams
 				.stream()
 				.filter(f -> f.getId() == teamId)
 				.findFirst()
 				.orElse(null);
-		
-		return team == null ? "TEAM NOT FOUND" : team.getName();
 	}
 }

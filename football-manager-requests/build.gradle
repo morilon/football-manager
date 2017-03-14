@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+jar {
+	baseName = 'football-manager-requests'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile project (':football-manager-configurations')
+	compile group: 'org.springframework', name: 'spring-web', version: '4.3.7.RELEASE'
+}

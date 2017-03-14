@@ -15,11 +15,12 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
 jar {
-	baseName = 'football-manager-store-matches'
+	baseName = 'football-manager-store-teams'
 	version = '0.0.1-SNAPSHOT'
 }
 
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
@@ -29,7 +30,9 @@ repositories {
 dependencies {
 	compile project (':football-manager-models')
 	compile project (':football-manager-configurations')
+	compile project (':football-manager-requests')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile group: 'junit', name: 'junit', version: '4.12'
 	testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'

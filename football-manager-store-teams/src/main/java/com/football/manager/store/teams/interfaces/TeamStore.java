@@ -6,5 +6,5 @@ import com.football.manager.models.teams.Team;
 
 public interface TeamStore {
 	List<Team> getAll();
-	String getTeamName(int teamId);
+	Team getById(int teamId);
 }
