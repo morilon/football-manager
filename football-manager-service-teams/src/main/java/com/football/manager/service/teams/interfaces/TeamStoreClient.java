@@ -7,6 +7,7 @@ import com.football.manager.configurations.endpoints.TeamEndpoints;
 import com.football.manager.models.teams.Team;
 
 import feign.Headers;
+import feign.Param;
 import feign.RequestLine;
 
 public interface TeamStoreClient {
@@ -16,5 +17,5 @@ public interface TeamStoreClient {
 	
 	@RequestLine("GET " + TeamEndpoints.GET_BY_ID)
 	@Headers(ContentTypes.APPLICATION_JSON)
-	Team getById(int teamId);
+	Team getById(@Param("teamId") int teamId);
 }

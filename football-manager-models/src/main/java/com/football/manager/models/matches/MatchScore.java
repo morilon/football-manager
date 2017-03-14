@@ -1,5 +1,6 @@
 package com.football.manager.models.matches;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.football.manager.models.common.Score;
 
 public class MatchScore {
@@ -29,6 +30,7 @@ public class MatchScore {
 		this.visitorTeamScore = visitorTeamScore;
 	}
 	
+	@JsonIgnore
 	public Boolean isValid() {
 		return 
 				this.getHomeTeamScore() != null && 
