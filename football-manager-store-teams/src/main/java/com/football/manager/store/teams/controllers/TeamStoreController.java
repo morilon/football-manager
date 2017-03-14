@@ -13,7 +13,7 @@ import com.football.manager.teams.requests.RequestMappingGetAll;
 import com.football.manager.teams.requests.RequestMappingGetById;
 
 @RestController
-public class TeamsStoreController {
+public class TeamStoreController {
 
 	@Autowired
 	private TeamStore store;

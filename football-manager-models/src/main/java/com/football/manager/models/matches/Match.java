@@ -8,6 +8,12 @@ public class Match extends MatchScore {
 		// Default constructor
 	}
 
+	public Match(int id, MatchScore matchScore) {
+		this.id = id;
+		homeTeamScore = matchScore.getHomeTeamScore();
+		visitorTeamScore = matchScore.getVisitorTeamScore();
+	}
+	
 	public Match(MatchScore matchScore) {
 		homeTeamScore = matchScore.getHomeTeamScore();
 		visitorTeamScore = matchScore.getVisitorTeamScore();
