@@ -29,7 +29,7 @@ public class MatchStoreController {
 
 		if (matchScore == null || !matchScore.isValid())
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-
+		
 		return ResponseEntity.ok(store.save(matchScore));
 	}
 

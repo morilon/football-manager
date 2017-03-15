@@ -7,7 +7,7 @@ import com.football.manager.models.matches.MatchScore;
 
 public interface MatchStore {
 
-	Match save(MatchScore match);
+	Match save(MatchScore matchScore);
 	void delete(int matchId);
 	Match getById(int matchId);
 	List<Match> getAllByTeam(int teamId);

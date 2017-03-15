@@ -26,7 +26,6 @@ public class MatchServiceController {
 	private MatchService service;
 
 	@RequestMappingSave
-	@ResponseStatus
 	public ResponseEntity<Match> save(@RequestBody MatchScore matchScore) {
 
 		if (matchScore == null || !matchScore.isValid())

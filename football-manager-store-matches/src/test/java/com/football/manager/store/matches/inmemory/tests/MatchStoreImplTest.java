@@ -84,12 +84,12 @@ public class MatchStoreImplTest {
 	@Test
 	public void getAllByTeam_should_return_all_matches_for_a_specific_team() {
 		setMatches();	
-		
+
 		Match expected = new Match(new MatchScore(new Score(3, 3), new Score(2, 2)));
 		expected.setId(3);
-		
+
 		List<Match> matches = store.getAllByTeam(3);
-		
+
 		assertThat(matches.size(), is(equalTo(1)));
 		assertMatch(expected, matches.get(0));
 	}
@@ -97,29 +97,29 @@ public class MatchStoreImplTest {
 	@Test
 	public void getAllByTeam_should_return_empty_when_teamId_is_invalid() {
 		setMatches();	
-	
+
 		List<Match> matches = store.getAllByTeam(999);
-		
+
 		assertThat(matches.size(), is(equalTo(0)));
 	}
 
 	public void getAll_should_return_all_matches() {
 		setMatches();
-		
+
 		List<Match> expected = new ArrayList<>();
 		expected.add(new Match(1, new MatchScore(new Score(1, 1), new Score(2, 0))));
 		expected.add(new Match(2, new MatchScore(new Score(2, 2), new Score(1, 1))));
 		expected.add(new Match(3, new MatchScore(new Score(3, 3), new Score(2, 2))));
-		
+
 		List<Match> actual = store.getAll();
-		
+
 		assertThat(expected.size(), is(equalTo(actual.size())));
-		
+
 		for(int i = 0; i < actual.size(); i++) {
 			assertMatch(expected.get(i), actual.get(i));
 		}
 	}
-	
+
 	private void assertMatch(Match expected, Match actual) {
 		assertThat(expected.getId(), is(equalTo(actual.getId())));		
 		assertScore(expected.getHomeTeamScore(), actual.getHomeTeamScore());
