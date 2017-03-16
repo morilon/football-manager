@@ -103,22 +103,7 @@ public class MatchStoreImplTest {
 		assertThat(matches.size(), is(equalTo(0)));
 	}
 
-	public void getAll_should_return_all_matches() {
-		setMatches();
 
-		List<Match> expected = new ArrayList<>();
-		expected.add(new Match(1, new MatchScore(new Score(1, 1), new Score(2, 0))));
-		expected.add(new Match(2, new MatchScore(new Score(2, 2), new Score(1, 1))));
-		expected.add(new Match(3, new MatchScore(new Score(3, 3), new Score(2, 2))));
-
-		List<Match> actual = store.getAll();
-
-		assertThat(expected.size(), is(equalTo(actual.size())));
-
-		for(int i = 0; i < actual.size(); i++) {
-			assertMatch(expected.get(i), actual.get(i));
-		}
-	}
 
 	private void assertMatch(Match expected, Match actual) {
 		assertThat(expected.getId(), is(equalTo(actual.getId())));		
@@ -135,7 +120,8 @@ public class MatchStoreImplTest {
 
 		Match match = new Match();
 
-		if (matchId > 0) match.setId(matchId);
+		if (matchId > 0) 
+			match.setId(matchId);
 
 		match.setHomeTeamScore(new Score(1, 1));
 		match.setVisitorTeamScore(new Score(2, 0));
@@ -143,6 +129,23 @@ public class MatchStoreImplTest {
 		return match;
 	}
 
+	public void getAll_should_return_all_matches() {
+		setMatches();
+
+		List<Match> expected = new ArrayList<>();
+		expected.add(new Match(1, new MatchScore(new Score(1, 1), new Score(2, 0))));
+		expected.add(new Match(2, new MatchScore(new Score(2, 2), new Score(1, 1))));
+		expected.add(new Match(3, new MatchScore(new Score(3, 3), new Score(2, 2))));
+
+		List<Match> actual = store.getAll();
+
+		assertThat(expected.size(), is(equalTo(actual.size())));
+
+		for(int i = 0; i < actual.size(); i++) {
+			assertMatch(expected.get(i), actual.get(i));
+		}
+	}
+	
 	private MatchScore getMatchScore() {
 		return new MatchScore(new Score(1, 1), new Score(2, 0));
 	}

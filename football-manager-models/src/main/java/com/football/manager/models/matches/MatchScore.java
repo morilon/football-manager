@@ -32,9 +32,9 @@ public class MatchScore {
 	
 	@JsonIgnore
 	public Boolean isValid() {
-		return 
-				this.getHomeTeamScore() != null && 
-				this.getVisitorTeamScore() != null &&
+	
+		return this.homeTeamScore != null &&
+				this.visitorTeamScore != null &&
 				this.getHomeTeamScore().getTeamId() > 0 &&
 				this.getVisitorTeamScore().getTeamId() > 0;
 	}

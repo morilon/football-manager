@@ -77,6 +77,24 @@ public class MatchStoreControllerTest {
 	}
 
 	@Test
+	public void save_return_bad_request_when_request_is_null() throws Exception {
+		mvc.perform(post("/matches"))	
+		.andExpect(status().isBadRequest())		
+		.andExpect(content().string(""));
+	}
+	
+	@Test
+	public void save_return_bad_request_when_request_is_invalid() throws Exception {
+		String match = gson.toJson(new MatchScore());
+		
+		mvc.perform(post("/matches")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(match))	
+		.andExpect(status().isBadRequest())		
+		.andExpect(content().string(""));
+	}
+	
+	@Test
 	public void delete_should_remove_a_match() throws Exception {
 		mvc.perform(delete("/matches/1"))
 		.andExpect(status().isOk())
